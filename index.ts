@@ -18,5 +18,5 @@ const api = merge(
 if (isErrorResult(api)) {
   console.error(`${api.message} (${api.type})`)
 } else {
-  writeFileSync('./openapi.yaml', dump(api.output), 'utf-8')
+  writeFileSync('./public/openapi.yaml', dump(api.output), 'utf-8')
 }
