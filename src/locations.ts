@@ -149,7 +149,6 @@ interface Attributes {
 
 interface Images {
   default: String
-  logo: String
   thumbnail: String
 }
 
