@@ -15,10 +15,10 @@ import {
 } from "@airtasker/spot"
 
 @api({
-  name: "Category Lookup API",
+  name: "Category API",
   version: "1.0.0",
 })
-class Categories {
+class CategoryApi {
   @securityHeader
   "Authorization": String
 }

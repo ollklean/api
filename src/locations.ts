@@ -16,10 +16,10 @@ import {
 } from "@airtasker/spot"
 
 @api({
-  name: "Location Lookup API",
+  name: "Location API",
   version: "1.0.0",
 })
-class Locations {
+class LocationApi {
   @securityHeader
   "Authorization": String
 }

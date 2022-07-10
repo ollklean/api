@@ -18,7 +18,7 @@ import {
   name: "Code Lookup API",
   version: "1.0.0",
 })
-class Codes {
+class CodesApi {
   @securityHeader
   "Authorization": String
 }
