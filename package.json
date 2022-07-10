@@ -1,0 +1,12 @@
+{
+  "name": "services",
+  "version": "1.0.0",
+  "description": "API Definition for Online Services",
+  "main": "index.js",
+  "repository": "https://github.com/ollklean/api.git",
+  "author": "Samuykti <administrator@samyukti.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@airtasker/spot": "^1.9.0"
+  }
+}
