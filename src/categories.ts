@@ -33,7 +33,7 @@ class ListCategories {
   request(
     @queryParams
     queryParams: {
-      page: Int32
+      page?: Int32
     }
   ) {}
 
@@ -134,16 +134,17 @@ class DeleteCategory {
 // models
 interface Category {
   id: Int64
-  kind: string
-  category: string
+  parent_id?: Int64
+  name: string
   description: string
-  createdBy: string
-  updatedBy: string
-  createdAt: DateTime
-  updatedAt: DateTime
+  created_by: string
+  updated_by: string
+  created_at: DateTime
+  updated_at: DateTime
 }
 
 interface CategoryRequest {
-  category: string
+  parent_id?: Int64
+  name: string
   description: string
 }

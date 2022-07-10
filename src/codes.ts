@@ -33,7 +33,7 @@ class ListCodes {
   request(
     @queryParams
     queryParams: {
-      page: Int32
+      page?: Int32
     }
   ) {}
 
@@ -137,10 +137,10 @@ interface Code {
   kind: string
   code: string
   description: string
-  createdBy: string
-  updatedBy: string
-  createdAt: DateTime
-  updatedAt: DateTime
+  created_by: string
+  updated_by: string
+  created_at: DateTime
+  updated_at: DateTime
 }
 
 interface CodeRequest {
