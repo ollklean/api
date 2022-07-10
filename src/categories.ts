@@ -9,7 +9,7 @@ import {
   response,
   securityHeader,
   DateTime,
-  Int32,
+  Integer,
   Int64,
   String,
 } from "@airtasker/spot"
@@ -33,7 +33,7 @@ class ListCategories {
   request(
     @queryParams
     queryParams: {
-      page?: Int32
+      page?: Integer
     }
   ) {}
 
@@ -132,11 +132,32 @@ class DeleteCategory {
 }
 
 // models
+interface Names {
+  ar: String
+  en: String
+}
+
+interface Descriptions {
+  ar: String
+  en: String
+}
+
+interface Attributes {
+  tags: String[]
+}
+
+interface Images {
+  default: String
+  thumbnail: String
+}
+
 interface Category {
   id: Int64
   parent_id?: Int64
-  name: string
-  description: string
+  names: Names
+  descriptions: Descriptions
+  attributes: Attributes
+  images: Images
   created_by: string
   updated_by: string
   created_at: DateTime
@@ -145,6 +166,8 @@ interface Category {
 
 interface CategoryRequest {
   parent_id?: Int64
-  name: string
-  description: string
+  names: Names
+  descriptions: Descriptions
+  attributes: Attributes
+  images: Images
 }
