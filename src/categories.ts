@@ -15,20 +15,20 @@ import {
 } from "@airtasker/spot"
 
 @api({
-  name: "Code Lookup API",
+  name: "Category Lookup API",
   version: "1.0.0",
 })
-class Codes {
+class Categories {
   @securityHeader
   "Authorization": String
 }
 
-// get codes
+// get categories
 @endpoint({
   method: "GET",
-  path: "/codes",
+  path: "/categories",
 })
-class ListCodes {
+class ListCategories {
   @request
   request(
     @queryParams
@@ -40,7 +40,7 @@ class ListCodes {
   @response({ status: 200 })
   response(
     @body
-    body: Code[],
+    body: Category[],
 
     @headers
     headers: {
@@ -49,31 +49,31 @@ class ListCodes {
   ) {}
 }
 
-// create code
+// create category
 @endpoint({
   method: "POST",
-  path: "/codes",
+  path: "/categories",
 })
-class CreateCode {
+class CreateCategory {
   @request
   request(
     @body
-    body: CodeRequest
+    body: CategoryRequest
   ) {}
 
   @response({ status: 201 })
   response(
     @body
-    body: Code
+    body: Category
   ) {}
 }
 
-// get code
+// get category
 @endpoint({
   method: "GET",
-  path: "/codes/:id",
+  path: "/categories/:id",
 })
-class GetCode {
+class GetCategory {
   @request
   request(
     @pathParams
@@ -85,16 +85,16 @@ class GetCode {
   @response({ status: 200 })
   response(
     @body
-    body: Code,
+    body: Category,
   ) {}
 }
 
-// update codes
+// update categories
 @endpoint({
   method: "PATCH",
-  path: "/codes/:id",
+  path: "/categories/:id",
 })
-class PatchCode {
+class PatchCategory {
   @request
   request(
     @pathParams
@@ -103,22 +103,22 @@ class PatchCode {
     },
 
     @body
-    body: CodeRequest
+    body: CategoryRequest
   ) {}
 
   @response({ status: 200 })
   response(
     @body
-    body: Code,
+    body: Category,
   ) {}
 }
 
-// delete code
+// delete category
 @endpoint({
   method: "DELETE",
-  path: "/codes/:id",
+  path: "/categories/:id",
 })
-class DeleteCode {
+class DeleteCategory {
   @request
   request(
     @pathParams
@@ -132,10 +132,10 @@ class DeleteCode {
 }
 
 // models
-interface Code {
+interface Category {
   id: Int64
   kind: string
-  code: string
+  category: string
   description: string
   createdBy: string
   updatedBy: string
@@ -143,7 +143,7 @@ interface Code {
   updatedAt: DateTime
 }
 
-interface CodeRequest {
-  code: string
+interface CategoryRequest {
+  category: string
   description: string
 }
