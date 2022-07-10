@@ -7,6 +7,7 @@ const head = Spot.parseContract("./src/api.ts")
 const codes = Spot.parseContract("./src/codes.ts")
 const categories = Spot.parseContract("./src/categories.ts")
 const items = Spot.parseContract("./src/items.ts")
+const chains = Spot.parseContract("./src/chains.ts")
 
 const api = merge(
   [
@@ -14,6 +15,7 @@ const api = merge(
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(codes))) },
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(categories)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(items)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(chains)))},
   ]
 )
 
