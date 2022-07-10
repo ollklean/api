@@ -9,7 +9,7 @@ import {
   response,
   securityHeader,
   DateTime,
-  Int32,
+  Integer,
   Int64,
   String,
 } from "@airtasker/spot"
@@ -33,7 +33,7 @@ class ListCodes {
   request(
     @queryParams
     queryParams: {
-      page?: Int32
+      page?: Integer
     }
   ) {}
 
@@ -134,16 +134,16 @@ class DeleteCode {
 // models
 interface Code {
   id: Int64
-  kind: string
-  code: string
-  description: string
-  created_by: string
-  updated_by: string
+  kind: String
+  code: String
+  description: String
+  created_by: String
+  updated_by: String
   created_at: DateTime
   updated_at: DateTime
 }
 
 interface CodeRequest {
-  code: string
-  description: string
+  code: String
+  description: String
 }
