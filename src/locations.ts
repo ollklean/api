@@ -153,6 +153,7 @@ interface Images {
 }
 
 interface Address {
+  label: String
   line_1: String
   line_2: String
   line_3: String
@@ -163,22 +164,25 @@ interface Address {
   country: String
   postal_code: String
   postal_box: String
+  is_default: boolean
 }
 
 interface Emails {
-  primary: String
-  alternate: String[]
+  label: String
+  email: String
+  is_default: boolean
 }
 
 interface Phones {
-  primary: String
-  alternate: String[]
+  label: String
+  phone: String
+  is_default: boolean
 }
 
-interface Contact {
-  address: Address
-  emails: Emails
-  phones: Phones
+interface Contacts {
+  addresses: Address[]
+  emails: Emails[]
+  phones: Phones[]
 }
 
 interface Location {
@@ -188,7 +192,7 @@ interface Location {
   descriptions: Descriptions
   attributes: Attributes
   images: Images
-  contacts: Contact
+  contacts: Contacts
   is_active: boolean
   is_archived: boolean
   created_by: String
@@ -203,5 +207,5 @@ interface LocationRequest {
   descriptions: Descriptions
   attributes: Attributes
   images: Images
-  contacts: Contact
+  contacts: Contacts
 }

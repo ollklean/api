@@ -179,7 +179,7 @@ interface Phones {
   is_default: boolean
 }
 
-interface Contact {
+interface Contacts {
   addresses: Address[]
   emails: Emails[]
   phones: Phones[]
@@ -190,7 +190,7 @@ interface Customer {
   names: Names
   attributes: Attributes
   images: Images
-  contacts: Contact
+  contacts: Contacts
   is_active: boolean
   is_archived: boolean
   created_by: String
@@ -203,5 +203,5 @@ interface CustomerRequest {
   names: Names
   attributes: Attributes
   images: Images
-  contacts: Contact
+  contacts: Contacts
 }
