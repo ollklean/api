@@ -89,7 +89,7 @@ class GetCode {
   ) {}
 }
 
-// update codes
+// update code
 @endpoint({
   method: "PATCH",
   path: "/codes/:id",

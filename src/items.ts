@@ -90,7 +90,7 @@ class GetItem {
   ) {}
 }
 
-// update items
+// update item
 @endpoint({
   method: "PATCH",
   path: "/items/:id",

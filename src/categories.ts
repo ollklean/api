@@ -89,7 +89,7 @@ class GetCategory {
   ) {}
 }
 
-// update categories
+// update category
 @endpoint({
   method: "PATCH",
   path: "/categories/:id",

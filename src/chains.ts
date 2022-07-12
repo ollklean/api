@@ -90,7 +90,7 @@ class GetChain {
   ) {}
 }
 
-// update chains
+// update chain
 @endpoint({
   method: "PATCH",
   path: "/chains/:id",

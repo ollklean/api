@@ -90,7 +90,7 @@ class GetLocation {
   ) {}
 }
 
-// update locations
+// update location
 @endpoint({
   method: "PATCH",
   path: "/locations/:id",

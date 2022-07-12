@@ -90,7 +90,7 @@ class GetCustomer {
   ) {}
 }
 
-// update customers
+// update customer
 @endpoint({
   method: "PATCH",
   path: "/customers/:id",

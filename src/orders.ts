@@ -138,7 +138,7 @@ class ConfirmOrder {
   ) {}
 }
 
-// confirm order
+// cancel order
 @endpoint({
   method: "POST",
   path: "/orders/:id/events/cancel",
@@ -186,7 +186,7 @@ class ProcessOrder {
   ) {}
 }
 
-// process order
+// progress order
 @endpoint({
   method: "POST",
   path: "/orders/:id/events/progress",
@@ -234,7 +234,7 @@ class DeliverOrder {
   ) {}
 }
 
-// deliver order
+// close order
 @endpoint({
   method: "POST",
   path: "/orders/:id/events/close",
@@ -258,7 +258,7 @@ class CloseOrder {
   ) {}
 }
 
-// deliver order
+// archive order
 @endpoint({
   method: "POST",
   path: "/orders/:id/events/archive",
