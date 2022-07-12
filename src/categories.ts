@@ -151,9 +151,14 @@ interface Images {
   thumbnail: String
 }
 
+interface CategoryParent {
+  id: Int64
+  names: Names
+}
+
 interface Category {
   id: Int64
-  parent_id?: Int64
+  parent?: CategoryParent
   names: Names
   descriptions: Descriptions
   attributes: Attributes
@@ -165,7 +170,7 @@ interface Category {
 }
 
 interface CategoryRequest {
-  parent_id?: Int64
+  parent?: CategoryParent
   names: Names
   descriptions: Descriptions
   attributes: Attributes

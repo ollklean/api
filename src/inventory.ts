@@ -138,14 +138,41 @@ class DeleteInventory {
 }
 
 // models
+interface Names {
+  ar: String
+  en: String
+}
+
+interface ItemCategory {
+  id: Int64
+  names: Names
+}
+
+interface LocationChain {
+  id: Int64
+  names: Names
+}
+
 interface Rates {
   default: Number
 }
 
+interface InventoryItem {
+  id: Int64
+  names: Names
+  category: ItemCategory
+}
+
+interface InventoryLocation {
+  id: Int64
+  names: Names
+  chain: LocationChain
+}
+
 interface Inventory {
   id: Int64
-  item_id: Int64
-  location_id: Int64
+  item: InventoryItem
+  location: InventoryLocation
   rates: Rates
   quantity: Number
   uom: String

@@ -156,9 +156,14 @@ interface Rates {
   default: Number
 }
 
+interface ItemCategory {
+  id: Int64
+  names: Names
+}
+
 interface Item {
   id: Int64
-  category_id: Int64
+  category: ItemCategory
   names: Names
   descriptions: Descriptions
   attributes: Attributes
@@ -173,7 +178,7 @@ interface Item {
 }
 
 interface ItemRequest {
-  category_id: Int64
+  category: ItemCategory
   names: Names
   descriptions: Descriptions
   attributes: Attributes

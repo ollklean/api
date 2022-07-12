@@ -138,11 +138,6 @@ interface Names {
   en: String
 }
 
-interface Descriptions {
-  ar: String
-  en: String
-}
-
 interface Attributes {
   tags: String[]
 }

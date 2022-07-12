@@ -280,6 +280,11 @@ class ArchiveOrder {
 }
 
 // models
+interface Names {
+  ar: String
+  en: String
+}
+
 interface Promises {
   processed_at: DateTime
   expected_at: DateTime
@@ -299,10 +304,25 @@ interface Discount {
   percent: Number
 }
 
+interface OrderCustomer {
+  id: Int64
+  names: Names
+}
+
+interface OrderItem {
+  id: Int64
+  names: Names
+}
+
+interface OrderLocation {
+  id: Int64
+  names: Names
+}
+
 interface OrderLine {
   id: Int64
-  location_id: Int64
-  item_id: Int64
+  location: OrderLocation
+  item: OrderItem
   quantity: Integer
   rate: Number
   promotions: Promotion[]
@@ -312,7 +332,7 @@ interface OrderLine {
 
 interface Order {
   id: Int64
-  customer_id: Int64
+  customer: OrderCustomer
   ordered_at: DateTime
   fulfilled_at: DateTime
   promises: Promises  
@@ -332,15 +352,15 @@ interface Order {
 }
 
 interface OrderLineRequest {
-  location_id: Int64
-  item_id: Int64
+  location: OrderLocation
+  item: OrderItem
   quantity: Integer
   rate: Number
   instructions: String[]
 }
 
 interface OrderRequest {
-  customer_id: Int64
+  customer: OrderCustomer
   ordered_at: DateTime
   promises: Promises  
   lines: OrderLineRequest[]

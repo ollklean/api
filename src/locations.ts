@@ -185,9 +185,14 @@ interface Contacts {
   phones: Phones[]
 }
 
+interface LocationChain {
+  id: Int64
+  names: Names
+}
+
 interface Location {
   id: Int64
-  chain_id: Int64
+  chain: LocationChain
   names: Names
   descriptions: Descriptions
   attributes: Attributes
@@ -202,7 +207,7 @@ interface Location {
 }
 
 interface LocationRequest {
-  chain_id: Int64
+  chain: LocationChain
   names: Names
   descriptions: Descriptions
   attributes: Attributes

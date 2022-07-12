@@ -152,9 +152,14 @@ interface Images {
   thumbnail: String
 }
 
+interface ChainParent {
+  id: Int64
+  names: Names
+}
+
 interface Chain {
   id: Int64
-  parent_id?: Int64
+  parent?: ChainParent
   names: Names
   descriptions: Descriptions
   attributes: Attributes
@@ -168,7 +173,7 @@ interface Chain {
 }
 
 interface ChainRequest {
-  parent_id?: Int64
+  parent?: ChainParent
   names: Names
   descriptions: Descriptions
   attributes: Attributes
