@@ -14,9 +14,9 @@ const customers = Spot.parseContract("./src/customers.ts")
 const orders = Spot.parseContract("./src/orders.ts")
 const invoices = Spot.parseContract("./src/invoices.ts")
 const payments = Spot.parseContract("./src/payments.ts")
-const bookmarks = Spot.parseContract("./src/bookmarks.ts")
-const likes = Spot.parseContract("./src/likes.ts")
-const preferences = Spot.parseContract("./src/preferences.ts")
+const bookmarks = Spot.parseContract("./src/my/bookmarks.ts")
+const likes = Spot.parseContract("./src/my/likes.ts")
+const preferences = Spot.parseContract("./src/my/preferences.ts")
 
 const api = merge(
   [
