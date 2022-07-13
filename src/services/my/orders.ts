@@ -8,27 +8,28 @@ import {
   request,
   response,
   securityHeader,
-  DateTime,
   Integer,
   Int64,
   String,
 } from "@airtasker/spot"
 
+import { Order, OrderRequest, OrderEvent } from "../../schema/orders"
+
 @api({
-  name: "Bookmark API",
+  name: "My Order API",
   version: "1.0.0",
 })
-class BookmarkApi {
+class MyOrderApi {
   @securityHeader
   "Authorization": String
 }
 
-// get bookmarks
+// get my orders
 @endpoint({
   method: "GET",
-  path: "/my/bookmarks",
+  path: "/my/orders",
 })
-class ListBookmarks {
+class ListMyOrders {
   @request
   request(
     @queryParams
@@ -40,7 +41,7 @@ class ListBookmarks {
   @response({ status: 200 })
   response(
     @body
-    body: Bookmark[],
+    body: Order[],
 
     @headers
     headers: {
@@ -49,31 +50,31 @@ class ListBookmarks {
   ) {}
 }
 
-// create bookmark
+// create my order
 @endpoint({
   method: "POST",
-  path: "/my/bookmarks",
+  path: "/my/orders",
 })
-class CreateBookmark {
+class CreateMyOrder {
   @request
   request(
     @body
-    body: BookmarkRequest
+    body: OrderRequest
   ) {}
 
   @response({ status: 201 })
   response(
     @body
-    body: Bookmark
+    body: Order
   ) {}
 }
 
-// get bookmark
+// get my order
 @endpoint({
   method: "GET",
-  path: "/my/bookmarks/:id",
+  path: "/my/orders/:id",
 })
-class GetBookmark {
+class GetMyOrder {
   @request
   request(
     @pathParams
@@ -85,43 +86,30 @@ class GetBookmark {
   @response({ status: 200 })
   response(
     @body
-    body: Bookmark,
+    body: Order,
   ) {}
 }
 
-// delete bookmark
+// cancel my order
 @endpoint({
-  method: "DELETE",
-  path: "/my/bookmarks/:id",
+  method: "POST",
+  path: "/my/orders/:id/events/cancel",
 })
-class DeleteBookmark {
+class CancelMyOrder {
   @request
   request(
     @pathParams
     pathParams: {
       id: Int64
     },
+
+    @body
+    body: OrderEvent
   ) {}
 
-  @response({ status: 204 })
-  response() {}
-}
-
-// models
-interface Bookmarkable {
-  id: Int64
-  kind: String
-}
-
-interface Bookmark {
-  id: Int64
-  bookmarkable: Bookmarkable
-  created_by: string
-  updated_by: string
-  created_at: DateTime
-  updated_at: DateTime
-}
-
-interface BookmarkRequest {
-  bookmarkable: Bookmarkable
+  @response({ status: 200 })
+  response(
+    @body
+    body: Order,
+  ) {}
 }

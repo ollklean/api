@@ -8,12 +8,12 @@ import {
   request,
   response,
   securityHeader,
-  DateTime,
   Integer,
   Int64,
   String,
-  Number,
 } from "@airtasker/spot"
+
+import { Payment, PaymentRequest, PaymentEvent } from "../schema/payments"
 
 @api({
   name: "Payment API",
@@ -112,58 +112,4 @@ class PayPayment {
     @body
     body: Payment,
   ) {}
-}
-
-// models
-interface Names {
-  ar: String
-  en: String
-}
-
-interface PaymentInvoice {
-  id: Int64
-}
-
-interface PaymentCustomer {
-  id: Int64
-  names: Names
-}
-
-interface PaymentAttributes {
-  tags: String[]
-}
-
-interface PaymentLine {
-  id: Int64
-  channel: String
-  amount: Number
-  reference: String
-  attributes: PaymentAttributes
-}
-
-interface Payment {
-  id: Int64
-  customer: PaymentCustomer
-  invoice: PaymentInvoice
-  paid_at: DateTime
-  lines: PaymentLine[]
-  amount: Number
-  status: String
-  notes: String[]
-  created_by: String
-  updated_by: String
-  created_at: DateTime
-  updated_at: DateTime
-}
-
-interface PaymentRequest {
-  customer: PaymentCustomer
-  invoice: PaymentInvoice
-  paid_at: DateTime
-  lines: PaymentLine[]
-  notes: String[]
-}
-
-interface PaymentEvent {
-  notes: String[]
 }

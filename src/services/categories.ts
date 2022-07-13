@@ -8,27 +8,28 @@ import {
   request,
   response,
   securityHeader,
-  DateTime,
   Integer,
   Int64,
   String,
 } from "@airtasker/spot"
 
+import { Category, CategoryRequest } from "../schema/categories"
+
 @api({
-  name: "Like API",
+  name: "Category API",
   version: "1.0.0",
 })
-class LikeApi {
+class CategoryApi {
   @securityHeader
   "Authorization": String
 }
 
-// get likes
+// get categories
 @endpoint({
   method: "GET",
-  path: "/my/likes",
+  path: "/categories",
 })
-class ListLikes {
+class ListCategories {
   @request
   request(
     @queryParams
@@ -40,7 +41,7 @@ class ListLikes {
   @response({ status: 200 })
   response(
     @body
-    body: Like[],
+    body: Category[],
 
     @headers
     headers: {
@@ -49,31 +50,31 @@ class ListLikes {
   ) {}
 }
 
-// create like
+// create category
 @endpoint({
   method: "POST",
-  path: "/my/likes",
+  path: "/categories",
 })
-class CreateLike {
+class CreateCategory {
   @request
   request(
     @body
-    body: LikeRequest
+    body: CategoryRequest
   ) {}
 
   @response({ status: 201 })
   response(
     @body
-    body: Like
+    body: Category
   ) {}
 }
 
-// get like
+// get category
 @endpoint({
   method: "GET",
-  path: "/my/likes/:id",
+  path: "/categories/:id",
 })
-class GetLike {
+class GetCategory {
   @request
   request(
     @pathParams
@@ -85,16 +86,40 @@ class GetLike {
   @response({ status: 200 })
   response(
     @body
-    body: Like,
+    body: Category,
   ) {}
 }
 
-// delete like
+// update category
+@endpoint({
+  method: "PATCH",
+  path: "/categories/:id",
+})
+class PatchCategory {
+  @request
+  request(
+    @pathParams
+    pathParams: {
+      id: Int64
+    },
+
+    @body
+    body: CategoryRequest
+  ) {}
+
+  @response({ status: 200 })
+  response(
+    @body
+    body: Category,
+  ) {}
+}
+
+// delete category
 @endpoint({
   method: "DELETE",
-  path: "/my/likes/:id",
+  path: "/categories/:id",
 })
-class DeleteLike {
+class DeleteCategory {
   @request
   request(
     @pathParams
@@ -105,23 +130,4 @@ class DeleteLike {
 
   @response({ status: 204 })
   response() {}
-}
-
-// models
-interface Likeable {
-  id: Int64
-  kind: String
-}
-
-interface Like {
-  id: Int64
-  likeable: Likeable
-  created_by: string
-  updated_by: string
-  created_at: DateTime
-  updated_at: DateTime
-}
-
-interface LikeRequest {
-  likeable: Likeable
 }

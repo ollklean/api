@@ -7,11 +7,11 @@ import {
   request,
   response,
   securityHeader,
-  DateTime,
   Integer,
-  Int64,
   String,
 } from "@airtasker/spot"
+
+import { Preferences, PreferencesRequest } from "../../schema/preferences"
 
 @api({
   name: "Preferences API",
@@ -65,34 +65,4 @@ class UpdatePreferences {
     @body
     body: Preferences
   ) {}
-}
-
-// models
-interface PreferencesNotifications {
-  marketing: boolean
-  order: boolean
-  progress: boolean
-  invoice: boolean
-  announcements: boolean
-  reminders: boolean
-}
-
-interface PreferencesAttributes {
-  language: string
-  timezone: string
-  notifications: PreferencesNotifications
-  tags: String[]
-}
-
-interface Preferences {
-  id: Int64
-  attributes: PreferencesAttributes
-  created_by: string
-  updated_by: string
-  created_at: DateTime
-  updated_at: DateTime
-}
-
-interface PreferencesRequest {
-  attributes: PreferencesAttributes
 }

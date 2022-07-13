@@ -8,27 +8,28 @@ import {
   request,
   response,
   securityHeader,
-  DateTime,
   Integer,
   Int64,
   String,
 } from "@airtasker/spot"
 
+import { Code, CodeRequest } from "../schema/codes"
+
 @api({
-  name: "Chain API",
+  name: "Code Lookup API",
   version: "1.0.0",
 })
-class ChainApi {
+class CodesApi {
   @securityHeader
   "Authorization": String
 }
 
-// get chains
+// get codes
 @endpoint({
   method: "GET",
-  path: "/chains",
+  path: "/codes",
 })
-class ListChains {
+class ListCodes {
   @request
   request(
     @queryParams
@@ -40,7 +41,7 @@ class ListChains {
   @response({ status: 200 })
   response(
     @body
-    body: Chain[],
+    body: Code[],
 
     @headers
     headers: {
@@ -49,31 +50,31 @@ class ListChains {
   ) {}
 }
 
-// create chain
+// create code
 @endpoint({
   method: "POST",
-  path: "/chains",
+  path: "/codes",
 })
-class CreateChain {
+class CreateCode {
   @request
   request(
     @body
-    body: ChainRequest
+    body: CodeRequest
   ) {}
 
   @response({ status: 201 })
   response(
     @body
-    body: Chain
+    body: Code
   ) {}
 }
 
-// get chain
+// get code
 @endpoint({
   method: "GET",
-  path: "/chains/:id",
+  path: "/codes/:id",
 })
-class GetChain {
+class GetCode {
   @request
   request(
     @pathParams
@@ -85,16 +86,16 @@ class GetChain {
   @response({ status: 200 })
   response(
     @body
-    body: Chain,
+    body: Code,
   ) {}
 }
 
-// update chain
+// update code
 @endpoint({
   method: "PATCH",
-  path: "/chains/:id",
+  path: "/codes/:id",
 })
-class PatchChain {
+class PatchCode {
   @request
   request(
     @pathParams
@@ -103,22 +104,22 @@ class PatchChain {
     },
 
     @body
-    body: ChainRequest
+    body: CodeRequest
   ) {}
 
   @response({ status: 200 })
   response(
     @body
-    body: Chain,
+    body: Code,
   ) {}
 }
 
-// delete chain
+// delete code
 @endpoint({
   method: "DELETE",
-  path: "/chains/:id",
+  path: "/codes/:id",
 })
-class DeleteChain {
+class DeleteCode {
   @request
   request(
     @pathParams
@@ -129,52 +130,4 @@ class DeleteChain {
 
   @response({ status: 204 })
   response() {}
-}
-
-// models
-interface Names {
-  ar: String
-  en: String
-}
-
-interface Descriptions {
-  ar: String
-  en: String
-}
-
-interface Attributes {
-  tags: String[]
-}
-
-interface Images {
-  default: String
-  thumbnail: String
-}
-
-interface ChainParent {
-  id: Int64
-  names: Names
-}
-
-interface Chain {
-  id: Int64
-  parent?: ChainParent
-  names: Names
-  descriptions: Descriptions
-  attributes: Attributes
-  images: Images
-  is_active: boolean
-  is_archived: boolean
-  created_by: String
-  updated_by: String
-  created_at: DateTime
-  updated_at: DateTime
-}
-
-interface ChainRequest {
-  parent?: ChainParent
-  names: Names
-  descriptions: Descriptions
-  attributes: Attributes
-  images: Images
 }

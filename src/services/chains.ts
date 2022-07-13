@@ -8,27 +8,28 @@ import {
   request,
   response,
   securityHeader,
-  DateTime,
   Integer,
   Int64,
   String,
 } from "@airtasker/spot"
 
+import { Chain, ChainRequest } from "../schema/chains"
+
 @api({
-  name: "Category API",
+  name: "Chain API",
   version: "1.0.0",
 })
-class CategoryApi {
+class ChainApi {
   @securityHeader
   "Authorization": String
 }
 
-// get categories
+// get chains
 @endpoint({
   method: "GET",
-  path: "/categories",
+  path: "/chains",
 })
-class ListCategories {
+class ListChains {
   @request
   request(
     @queryParams
@@ -40,7 +41,7 @@ class ListCategories {
   @response({ status: 200 })
   response(
     @body
-    body: Category[],
+    body: Chain[],
 
     @headers
     headers: {
@@ -49,31 +50,31 @@ class ListCategories {
   ) {}
 }
 
-// create category
+// create chain
 @endpoint({
   method: "POST",
-  path: "/categories",
+  path: "/chains",
 })
-class CreateCategory {
+class CreateChain {
   @request
   request(
     @body
-    body: CategoryRequest
+    body: ChainRequest
   ) {}
 
   @response({ status: 201 })
   response(
     @body
-    body: Category
+    body: Chain
   ) {}
 }
 
-// get category
+// get chain
 @endpoint({
   method: "GET",
-  path: "/categories/:id",
+  path: "/chains/:id",
 })
-class GetCategory {
+class GetChain {
   @request
   request(
     @pathParams
@@ -85,16 +86,16 @@ class GetCategory {
   @response({ status: 200 })
   response(
     @body
-    body: Category,
+    body: Chain,
   ) {}
 }
 
-// update category
+// update chain
 @endpoint({
   method: "PATCH",
-  path: "/categories/:id",
+  path: "/chains/:id",
 })
-class PatchCategory {
+class PatchChain {
   @request
   request(
     @pathParams
@@ -103,22 +104,22 @@ class PatchCategory {
     },
 
     @body
-    body: CategoryRequest
+    body: ChainRequest
   ) {}
 
   @response({ status: 200 })
   response(
     @body
-    body: Category,
+    body: Chain,
   ) {}
 }
 
-// delete category
+// delete chain
 @endpoint({
   method: "DELETE",
-  path: "/categories/:id",
+  path: "/chains/:id",
 })
-class DeleteCategory {
+class DeleteChain {
   @request
   request(
     @pathParams
@@ -129,50 +130,4 @@ class DeleteCategory {
 
   @response({ status: 204 })
   response() {}
-}
-
-// models
-interface Names {
-  ar: String
-  en: String
-}
-
-interface Descriptions {
-  ar: String
-  en: String
-}
-
-interface Attributes {
-  tags: String[]
-}
-
-interface Images {
-  default: String
-  thumbnail: String
-}
-
-interface CategoryParent {
-  id: Int64
-  names: Names
-}
-
-interface Category {
-  id: Int64
-  parent?: CategoryParent
-  names: Names
-  descriptions: Descriptions
-  attributes: Attributes
-  images: Images
-  created_by: string
-  updated_by: string
-  created_at: DateTime
-  updated_at: DateTime
-}
-
-interface CategoryRequest {
-  parent?: CategoryParent
-  names: Names
-  descriptions: Descriptions
-  attributes: Attributes
-  images: Images
 }

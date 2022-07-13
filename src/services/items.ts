@@ -8,27 +8,28 @@ import {
   request,
   response,
   securityHeader,
-  DateTime,
   Integer,
   Int64,
   String,
 } from "@airtasker/spot"
 
+import { Item, ItemRequest } from "../schema/items"
+
 @api({
-  name: "Code Lookup API",
+  name: "Item API",
   version: "1.0.0",
 })
-class CodesApi {
+class ItemApi {
   @securityHeader
   "Authorization": String
 }
 
-// get codes
+// get items
 @endpoint({
   method: "GET",
-  path: "/codes",
+  path: "/items",
 })
-class ListCodes {
+class ListItems {
   @request
   request(
     @queryParams
@@ -40,7 +41,7 @@ class ListCodes {
   @response({ status: 200 })
   response(
     @body
-    body: Code[],
+    body: Item[],
 
     @headers
     headers: {
@@ -49,31 +50,31 @@ class ListCodes {
   ) {}
 }
 
-// create code
+// create item
 @endpoint({
   method: "POST",
-  path: "/codes",
+  path: "/items",
 })
-class CreateCode {
+class CreateItem {
   @request
   request(
     @body
-    body: CodeRequest
+    body: ItemRequest
   ) {}
 
   @response({ status: 201 })
   response(
     @body
-    body: Code
+    body: Item
   ) {}
 }
 
-// get code
+// get item
 @endpoint({
   method: "GET",
-  path: "/codes/:id",
+  path: "/items/:id",
 })
-class GetCode {
+class GetItem {
   @request
   request(
     @pathParams
@@ -85,16 +86,16 @@ class GetCode {
   @response({ status: 200 })
   response(
     @body
-    body: Code,
+    body: Item,
   ) {}
 }
 
-// update code
+// update item
 @endpoint({
   method: "PATCH",
-  path: "/codes/:id",
+  path: "/items/:id",
 })
-class PatchCode {
+class PatchItem {
   @request
   request(
     @pathParams
@@ -103,22 +104,22 @@ class PatchCode {
     },
 
     @body
-    body: CodeRequest
+    body: ItemRequest
   ) {}
 
   @response({ status: 200 })
   response(
     @body
-    body: Code,
+    body: Item,
   ) {}
 }
 
-// delete code
+// delete item
 @endpoint({
   method: "DELETE",
-  path: "/codes/:id",
+  path: "/items/:id",
 })
-class DeleteCode {
+class DeleteItem {
   @request
   request(
     @pathParams
@@ -129,21 +130,4 @@ class DeleteCode {
 
   @response({ status: 204 })
   response() {}
-}
-
-// models
-interface Code {
-  id: Int64
-  kind: String
-  code: String
-  description: String
-  created_by: String
-  updated_by: String
-  created_at: DateTime
-  updated_at: DateTime
-}
-
-interface CodeRequest {
-  code: String
-  description: String
 }
