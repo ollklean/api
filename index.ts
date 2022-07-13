@@ -20,6 +20,15 @@ const myPreferences = Spot.parseContract("./src/services/my/preferences.ts")
 const myOrders = Spot.parseContract("./src/services/my/orders.ts")
 const myInvoices = Spot.parseContract("./src/services/my/invoices.ts")
 const myPayments = Spot.parseContract("./src/services/my/payments.ts")
+const manageCategories = Spot.parseContract("./src/services/accounts/categories.ts")
+const manageItems = Spot.parseContract("./src/services/accounts/items.ts")
+const manageChains = Spot.parseContract("./src/services/accounts/chains.ts")
+const manageLocations = Spot.parseContract("./src/services/accounts/locations.ts")
+const manageInventory = Spot.parseContract("./src/services/accounts/inventory.ts")
+const manageCustomers = Spot.parseContract("./src/services/accounts/customers.ts")
+const manageOrders = Spot.parseContract("./src/services/accounts/orders.ts")
+const manageInvoices = Spot.parseContract("./src/services/accounts/invoices.ts")
+const managePayments = Spot.parseContract("./src/services/accounts/payments.ts")
 
 const api = merge(
   [
@@ -40,6 +49,15 @@ const api = merge(
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myOrders)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myInvoices)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myPayments)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageCategories)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageItems)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageChains)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageLocations)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageInventory)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageCustomers)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageOrders)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageInvoices)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(managePayments)))},
   ]
 )
 
