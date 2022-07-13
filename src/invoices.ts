@@ -138,7 +138,7 @@ class CancelInvoice {
   ) {}
 }
 
-// cancel invoice
+// pay invoice
 @endpoint({
   method: "POST",
   path: "/invoices/:id/events/pay",
