@@ -249,6 +249,7 @@ interface InvoiceLine {
 interface Invoice {
   id: Int64
   customer: InvoiceCustomer
+  order: InvoiceOrder
   invoiced_at: DateTime
   fulfilled_at: DateTime
   lines: InvoiceLine[]
