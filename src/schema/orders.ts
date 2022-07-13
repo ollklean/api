@@ -66,6 +66,7 @@ export interface OrderRequest {
 }
 
 interface OrderLineUpdate {
+  id: Int64
   quantity: Integer
   rate: Number
   instructions: String[]
@@ -79,6 +80,7 @@ export interface OrderUpdate {
 }
 
 interface OrderLineEvent {
+  id: Int64
   instructions: String[]
 }
 
