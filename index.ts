@@ -14,6 +14,7 @@ const customers = Spot.parseContract("./src/customers.ts")
 const orders = Spot.parseContract("./src/orders.ts")
 const invoices = Spot.parseContract("./src/invoices.ts")
 const payments = Spot.parseContract("./src/payments.ts")
+const bookmarks = Spot.parseContract("./src/bookmarks.ts")
 
 const api = merge(
   [
@@ -28,6 +29,7 @@ const api = merge(
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(orders)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(invoices)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(payments)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(bookmarks)))},
   ]
 )
 
