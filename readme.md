@@ -2,7 +2,13 @@
 
 API Specification for Ollklean services
 
-## Run
+## Develop
+
+```bash
+yarn dev
+```
+
+## Generate
 
 ```bash
 yarn generate
