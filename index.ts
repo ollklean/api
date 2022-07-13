@@ -14,9 +14,12 @@ const customers = Spot.parseContract("./src/customers.ts")
 const orders = Spot.parseContract("./src/orders.ts")
 const invoices = Spot.parseContract("./src/invoices.ts")
 const payments = Spot.parseContract("./src/payments.ts")
-const bookmarks = Spot.parseContract("./src/my/bookmarks.ts")
-const likes = Spot.parseContract("./src/my/likes.ts")
-const preferences = Spot.parseContract("./src/my/preferences.ts")
+const myBookmarks = Spot.parseContract("./src/my/bookmarks.ts")
+const myLikes = Spot.parseContract("./src/my/likes.ts")
+const myPreferences = Spot.parseContract("./src/my/preferences.ts")
+const myOrders = Spot.parseContract("./src/my/orders.ts")
+const myInvoices = Spot.parseContract("./src/my/invoices.ts")
+const myPayments = Spot.parseContract("./src/my/payments.ts")
 
 const api = merge(
   [
@@ -31,9 +34,12 @@ const api = merge(
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(orders)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(invoices)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(payments)))},
-    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(bookmarks)))},
-    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(likes)))},
-    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(preferences)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myBookmarks)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myLikes)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myPreferences)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myOrders)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myInvoices)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(myPayments)))},
   ]
 )
 
