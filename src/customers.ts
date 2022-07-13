@@ -12,7 +12,6 @@ import {
   Integer,
   Int64,
   String,
-  Number,
 } from "@airtasker/spot"
 
 @api({

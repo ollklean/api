@@ -3,7 +3,6 @@ import {
   body,
   endpoint,
   headers,
-  pathParams,
   queryParams,
   request,
   response,
