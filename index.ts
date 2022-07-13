@@ -5,6 +5,7 @@ import { dump } from 'js-yaml'
 
 const head = Spot.parseContract("./src/api.ts")
 const codes = Spot.parseContract("./src/services/codes.ts")
+const accounts = Spot.parseContract("./src/services/accounts.ts")
 const categories = Spot.parseContract("./src/services/categories.ts")
 const items = Spot.parseContract("./src/services/items.ts")
 const chains = Spot.parseContract("./src/services/chains.ts")
@@ -29,11 +30,13 @@ const manageCustomers = Spot.parseContract("./src/services/accounts/customers.ts
 const manageOrders = Spot.parseContract("./src/services/accounts/orders.ts")
 const manageInvoices = Spot.parseContract("./src/services/accounts/invoices.ts")
 const managePayments = Spot.parseContract("./src/services/accounts/payments.ts")
+const manageAccounts = Spot.parseContract("./src/services/manage/accounts.ts")
 
 const api = merge(
   [
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(head))) },
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(codes))) },
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(accounts))) },
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(categories)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(items)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(chains)))},
@@ -58,6 +61,7 @@ const api = merge(
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageOrders)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageInvoices)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(managePayments)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(manageAccounts)))},
   ]
 )
 
