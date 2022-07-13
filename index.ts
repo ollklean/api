@@ -12,6 +12,7 @@ const locations = Spot.parseContract("./src/locations.ts")
 const inventory = Spot.parseContract("./src/inventory.ts")
 const customers = Spot.parseContract("./src/customers.ts")
 const orders = Spot.parseContract("./src/orders.ts")
+const invoices = Spot.parseContract("./src/invoices.ts")
 
 const api = merge(
   [
@@ -24,6 +25,7 @@ const api = merge(
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(inventory)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(customers)))},
     { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(orders)))},
+    { oas: JSON.parse(JSON.stringify(Spot.OpenApi3.generateOpenAPI3(invoices)))},
   ]
 )
 
