@@ -5,41 +5,14 @@ import {
   String,
 } from "@airtasker/spot"
 
-interface Names {
-  ar: String
-  en: String
-}
-
-interface ItemCategory {
-  id: Int64
-  names: Names
-}
-
-interface LocationChain {
-  id: Int64
-  names: Names
-}
-
-interface Rates {
-  default: Number
-}
-
-interface InventoryItem {
-  id: Int64
-  names: Names
-  category: ItemCategory
-}
-
-interface InventoryLocation {
-  id: Int64
-  names: Names
-  chain: LocationChain
-}
+import { Rates } from "./common"
+import { ItemHeader } from "./items"
+import { LocationHeader } from "./locations"
 
 export interface Inventory {
   id: Int64
-  item: InventoryItem
-  location: InventoryLocation
+  item: ItemHeader
+  location: LocationHeader
   rates: Rates
   quantity: Number
   uom: String

@@ -4,23 +4,10 @@ import {
   String,
 } from "@airtasker/spot"
 
-interface Names {
-  ar: String
-  en: String
-}
+import { Names, Descriptions, Images } from "./common"
 
-interface Descriptions {
-  ar: String
-  en: String
-}
-
-interface Attributes {
+interface ChainAttributes {
   tags: String[]
-}
-
-interface Images {
-  default: String
-  thumbnail: String
 }
 
 interface ChainParent {
@@ -33,7 +20,7 @@ export interface Chain {
   parent?: ChainParent
   names: Names
   descriptions: Descriptions
-  attributes: Attributes
+  attributes: ChainAttributes
   images: Images
   is_active: boolean
   is_archived: boolean
@@ -47,6 +34,11 @@ export interface ChainRequest {
   parent?: ChainParent
   names: Names
   descriptions: Descriptions
-  attributes: Attributes
+  attributes: ChainAttributes
   images: Images
+}
+
+export interface ChainHeader {
+  id: Int64
+  names: Names
 }

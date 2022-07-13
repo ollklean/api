@@ -4,57 +4,21 @@ import {
   String,
 } from "@airtasker/spot"
 
-interface Names {
+import { Images, Contacts } from "./common"
+
+interface CustomerNames {
   ar: String
   en: String
 }
 
-interface Attributes {
+interface CustomerAttributes {
   tags: String[]
-}
-
-interface Images {
-  default: String
-  thumbnail: String
-}
-
-interface Address {
-  label: String
-  line_1: String
-  line_2: String
-  line_3: String
-  area: String
-  city: String
-  region: String
-  state: String
-  country: String
-  postal_code: String
-  postal_box: String
-  is_default: boolean
-}
-
-interface Emails {
-  label: String
-  email: String
-  is_default: boolean
-}
-
-interface Phones {
-  label: String
-  phone: String
-  is_default: boolean
-}
-
-interface Contacts {
-  addresses: Address[]
-  emails: Emails[]
-  phones: Phones[]
 }
 
 export interface Customer {
   id: Int64
-  names: Names
-  attributes: Attributes
+  names: CustomerNames
+  attributes: CustomerAttributes
   images: Images
   contacts: Contacts
   is_active: boolean
@@ -66,8 +30,13 @@ export interface Customer {
 }
 
 export interface CustomerRequest {
-  names: Names
-  attributes: Attributes
+  names: CustomerNames
+  attributes: CustomerAttributes
   images: Images
   contacts: Contacts
+}
+
+export interface CustomerHeader {
+  id: Int64
+  names: CustomerNames
 }

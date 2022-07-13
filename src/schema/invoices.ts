@@ -6,39 +6,16 @@ import {
   String,
 } from "@airtasker/spot"
 
-interface Names {
-  ar: String
-  en: String
-}
-
-interface Discount {
-  code: String
-  percent: Number
-}
-
-interface InvoiceOrder {
-  id: Int64
-}
-
-interface InvoiceCustomer {
-  id: Int64
-  names: Names
-}
-
-interface InvoiceItem {
-  id: Int64
-  names: Names
-}
-
-interface InvoiceLocation {
-  id: Int64
-  names: Names
-}
+import { Discount } from "./common"
+import { CustomerHeader } from "./customers"
+import { ItemHeader } from "./items"
+import { LocationHeader } from "./locations"
+import { OrderHeader } from "./orders"
 
 interface InvoiceLine {
   id: Int64
-  location: InvoiceLocation
-  item: InvoiceItem
+  location: LocationHeader
+  item: ItemHeader
   quantity: Integer
   rate: Number
   discounts: Discount[]
@@ -46,8 +23,8 @@ interface InvoiceLine {
 
 export interface Invoice {
   id: Int64
-  customer: InvoiceCustomer
-  order: InvoiceOrder
+  customer: CustomerHeader
+  order: OrderHeader
   invoiced_at: DateTime
   fulfilled_at: DateTime
   lines: InvoiceLine[]
@@ -64,11 +41,15 @@ export interface Invoice {
 }
 
 export interface InvoiceRequest {
-  order: InvoiceOrder
+  order: OrderHeader
   invoiced_at: DateTime
   notes: String[]
 }
 
 export interface InvoiceEvent {
   notes: String[]
+}
+
+export interface InvoiceHeader {
+  id: Int64
 }

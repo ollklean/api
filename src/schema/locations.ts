@@ -4,56 +4,11 @@ import {
   String,
 } from "@airtasker/spot"
 
-interface Names {
-  ar: String
-  en: String
-}
+import { Names, Descriptions, Contacts, Images } from "./common"
+import { ChainHeader } from "./chains"
 
-interface Descriptions {
-  ar: String
-  en: String
-}
-
-interface Attributes {
+interface LocationAttributes {
   tags: String[]
-}
-
-interface Images {
-  default: String
-  thumbnail: String
-}
-
-interface Address {
-  label: String
-  line_1: String
-  line_2: String
-  line_3: String
-  area: String
-  city: String
-  region: String
-  state: String
-  country: String
-  postal_code: String
-  postal_box: String
-  is_default: boolean
-}
-
-interface Emails {
-  label: String
-  email: String
-  is_default: boolean
-}
-
-interface Phones {
-  label: String
-  phone: String
-  is_default: boolean
-}
-
-interface Contacts {
-  addresses: Address[]
-  emails: Emails[]
-  phones: Phones[]
 }
 
 interface LocationChain {
@@ -66,7 +21,7 @@ export interface Location {
   chain: LocationChain
   names: Names
   descriptions: Descriptions
-  attributes: Attributes
+  attributes: LocationAttributes
   images: Images
   contacts: Contacts
   is_active: boolean
@@ -81,7 +36,13 @@ export interface LocationRequest {
   chain: LocationChain
   names: Names
   descriptions: Descriptions
-  attributes: Attributes
+  attributes: LocationAttributes
   images: Images
   contacts: Contacts
+}
+
+export interface LocationHeader {
+  id: Int64
+  names: Names
+  chain: ChainHeader
 }

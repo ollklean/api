@@ -6,49 +6,20 @@ import {
   String,
 } from "@airtasker/spot"
 
-interface Names {
-  ar: String
-  en: String
-}
+import { Discount, Promotion, Voucher } from "./common"
+import { CustomerHeader } from "./customers"
+import { ItemHeader } from "./items"
+import { LocationHeader } from "./locations"
 
-interface Promises {
+interface OrderPromises {
   processed_at: DateTime
   expected_at: DateTime
 }
 
-interface Voucher {
-  code: String
-}
-
-interface Promotion {
-  code: String
-  percent: Number
-}
-
-interface Discount {
-  code: String
-  percent: Number
-}
-
-interface OrderCustomer {
-  id: Int64
-  names: Names
-}
-
-interface OrderItem {
-  id: Int64
-  names: Names
-}
-
-interface OrderLocation {
-  id: Int64
-  names: Names
-}
-
 interface OrderLine {
   id: Int64
-  location: OrderLocation
-  item: OrderItem
+  location: LocationHeader
+  item: ItemHeader
   quantity: Integer
   rate: Number
   promotions: Promotion[]
@@ -58,10 +29,10 @@ interface OrderLine {
 
 export interface Order {
   id: Int64
-  customer: OrderCustomer
+  customer: CustomerHeader
   ordered_at: DateTime
   fulfilled_at: DateTime
-  promises: Promises
+  promises: OrderPromises
   lines: OrderLine[]
   vouchers: Voucher[]
   promotions: Promotion[]
@@ -78,17 +49,17 @@ export interface Order {
 }
 
 interface OrderLineRequest {
-  location: OrderLocation
-  item: OrderItem
+  location: LocationHeader
+  item: ItemHeader
   quantity: Integer
   rate: Number
   instructions: String[]
 }
 
 export interface OrderRequest {
-  customer: OrderCustomer
+  customer: CustomerHeader
   ordered_at: DateTime
-  promises: Promises
+  promises: OrderPromises
   lines: OrderLineRequest[]
   vouchers: Voucher[]
   notes: String[]
@@ -101,7 +72,7 @@ interface OrderLineUpdate {
 }
 
 export interface OrderUpdate {
-  promises: Promises
+  promises: OrderPromises
   lines: OrderLineUpdate[]
   vouchers: Voucher[]
   notes: String[]
@@ -114,4 +85,8 @@ interface OrderLineEvent {
 export interface OrderEvent {
   lines: OrderLineEvent[]
   notes: String[]
+}
+
+export interface OrderHeader {
+  id: Int64
 }

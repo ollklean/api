@@ -4,23 +4,10 @@ import {
   String,
 } from "@airtasker/spot"
 
-interface Names {
-  ar: String
-  en: String
-}
+import { Names, Descriptions, Images } from "./common"
 
-interface Descriptions {
-  ar: String
-  en: String
-}
-
-interface Attributes {
+interface CategoryAttributes {
   tags: String[]
-}
-
-interface Images {
-  default: String
-  thumbnail: String
 }
 
 interface CategoryParent {
@@ -33,7 +20,7 @@ export interface Category {
   parent?: CategoryParent
   names: Names
   descriptions: Descriptions
-  attributes: Attributes
+  attributes: CategoryAttributes
   images: Images
   created_by: string
   updated_by: string
@@ -45,6 +32,11 @@ export interface CategoryRequest {
   parent?: CategoryParent
   names: Names
   descriptions: Descriptions
-  attributes: Attributes
+  attributes: CategoryAttributes
   images: Images
+}
+
+export interface CategoryHeader {
+  id: Int64
+  names: Names
 }

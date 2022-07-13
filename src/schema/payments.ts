@@ -5,19 +5,8 @@ import {
   String,
 } from "@airtasker/spot"
 
-interface Names {
-  ar: String
-  en: String
-}
-
-interface PaymentInvoice {
-  id: Int64
-}
-
-interface PaymentCustomer {
-  id: Int64
-  names: Names
-}
+import { CustomerHeader } from "./customers"
+import { InvoiceHeader } from "./invoices"
 
 interface PaymentAttributes {
   tags: String[]
@@ -33,8 +22,8 @@ interface PaymentLine {
 
 export interface Payment {
   id: Int64
-  customer: PaymentCustomer
-  invoice: PaymentInvoice
+  customer: CustomerHeader
+  invoice: InvoiceHeader
   paid_at: DateTime
   lines: PaymentLine[]
   amount: Number
@@ -47,8 +36,8 @@ export interface Payment {
 }
 
 export interface PaymentRequest {
-  customer: PaymentCustomer
-  invoice: PaymentInvoice
+  customer: CustomerHeader
+  invoice: InvoiceHeader
   paid_at: DateTime
   lines: PaymentLine[]
   notes: String[]
